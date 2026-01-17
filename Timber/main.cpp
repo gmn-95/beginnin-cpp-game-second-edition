@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Timeber");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Timber");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
