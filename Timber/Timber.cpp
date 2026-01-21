@@ -2,31 +2,45 @@
 
 using namespace sf;
 
+constexpr std::string BASE_GRAPHICS_PATH = "../graphics/";
+constexpr std::string TITLE_WINDOW = "Timber";
+constexpr int WIDTH_WINDOW = 1920;
+constexpr int HEIGHT_WINDOW = 1080;
+
+namespace Timber
+{
+    void loadTextureFromFile(const std::string& fileName, Texture& texture)
+    {
+        texture.loadFromFile(BASE_GRAPHICS_PATH + fileName);
+    }
+}
+
+
 int main()
 {
     //Create a video mode object
-    VideoMode vm(1920, 1080);
+    VideoMode vm(WIDTH_WINDOW, HEIGHT_WINDOW);
 
     //Create and open a window for the game
-    RenderWindow window(vm, "Timber", Style::Fullscreen);
+    RenderWindow window(vm, TITLE_WINDOW, Style::Fullscreen);
 
     //Create a texture to hold a graphic on the GPU
     Texture textureBackground;
-    textureBackground.loadFromFile("../graphics/background.png");
+    Timber::loadTextureFromFile("background.png", textureBackground);
     Sprite spriteBackground;
     spriteBackground.setTexture(textureBackground);
     spriteBackground.setPosition(0, 0);
 
     //make a tree sprite
     Texture textureTree;
-    textureTree.loadFromFile("../graphics/tree.png");
+    Timber::loadTextureFromFile("tree.png", textureTree);
     Sprite spriteTree;
     spriteTree.setTexture(textureTree);
     spriteTree.setPosition(810, 0);
 
     //prepare the bee
     Texture textureBee;
-    textureBee.loadFromFile("../graphics/bee.png");
+    Timber::loadTextureFromFile("bee.png", textureBee);
     Sprite spriteBee;
     spriteBee.setTexture(textureBee);
     spriteBee.setPosition(0, 800);
@@ -37,7 +51,7 @@ int main()
 
     // make 3 cloud sprites from 1 texture
     Texture textureCloud;
-    textureCloud.loadFromFile("../graphics/cloud.png");
+    Timber::loadTextureFromFile("cloud.png", textureCloud);
 
     // 3 new sprites with de same texture
     Sprite spriteCloud1;
@@ -105,3 +119,4 @@ int main()
 
     return 0;
 }
+
